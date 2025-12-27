@@ -2,6 +2,7 @@ from pydantic_settings import BaseSettings
 
 class Settings(BaseSettings):
     DB_HOST: str
+    DB_LOCATION: str
     DB_PORT: int
     DB_USER: str
     DB_PASS: str
@@ -16,4 +17,4 @@ class Settings(BaseSettings):
         env_file = ".env"
     
 settings = Settings()
-DATABASE_URL = f"postgresql+asyncpg://{settings.DB_USER}:{settings.DB_PASS}@{settings.DB_HOST}:{settings.DB_PORT}/{settings.DB_NAME}"
+DATABASE_URL = f"postgresql+asyncpg://{settings.DB_USER}:{settings.DB_PASS}@{settings.DB_HOST}-{settings.DB_LOCATION}:{settings.DB_PORT}/{settings.DB_NAME}"
